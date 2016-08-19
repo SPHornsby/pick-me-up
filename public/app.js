@@ -14,13 +14,16 @@ function displayResult(data) {
   getResults()
     .then(function(data) {
       var div = $('#results');
-      var ol = $('<ol>');
+      $(div).empty();
+      var ul = $('<ul>').addClass('list-group');
       var solution = data.solution;
       var stops = solution["vehicle_1"];
       for (stop of stops) {
         console.log(stop);
         var li = $('<li>').text(stop['location_name'] + ' at ' + stop['arrival_time']);
-        $(div).append(li);
+        $(li).addClass('list-group-item')
+        $(ul).append(li);
       }
+      $(div).append(ul);
     });
 }
