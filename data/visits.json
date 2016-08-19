@@ -1,0 +1,33 @@
+{
+    "order_1": {
+      "location": {
+        "name": "Lazy Dog",
+        "lat": 33.8082883,
+        "lng": -117.8698494
+      },
+      "start": "9:00",
+      "end": "12:00",
+      "duration": 10
+    },
+    "order_2": {
+      "location": {
+        "name": "Bruxie",
+        "lat": 33.7913844,
+        "lng": -117.8554907
+      },
+      "start": "9:00",
+      "end": "12:00",
+      "duration": 10
+    },
+    "order_3": {
+      "location": {
+        "name": "Rutabegorz",
+        "lat": 33.7908784,
+        "lng": -117.8555058
+      },
+      "start": "8:00",
+      "end": "9:00",
+      "duration": 30
+    
+    }
+}
