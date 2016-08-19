@@ -1,0 +1,26 @@
+{
+  "name": "pick-me-up",
+  "version": "1.0.0",
+  "description": "A fleet management app for parcel pickup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPHornsby/pick-me-up.git"
+  },
+  "author": "sean.hornsby@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SPHornsby/pick-me-up/issues"
+  },
+  "homepage": "https://github.com/SPHornsby/pick-me-up#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.74.0",
+    "routific": "0.0.2",
+    "underscore": "^1.8.3"
+  }
+}

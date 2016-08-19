@@ -1,0 +1,18 @@
+{
+      "vehicle_1": {
+      "start_location": {
+        "id": "depot",
+        "name": "CHOC",
+        "lat": 33.7809554,
+        "lng": -117.8673547
+      },
+      "end_location": {
+        "id": "depot",
+        "name": "CHOC",
+        "lat": 33.7809554,
+        "lng": -117.8673547
+      },
+      "shift_start": "8:00",
+      "shift_end": "12:00"
+    }
+}
