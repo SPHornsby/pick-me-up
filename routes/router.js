@@ -1,35 +1,47 @@
-var router = require('express').Router();
+var Router = require('express').Router;
 var request = require('request');
-var data = require('../data/data.json');
 var auth = `bearer ${process.env.ROUTIFIC_KEY}`;
-var options = {
-  url: 'https://api.routific.com/v1/vrp',
-  json: data,
-  headers: {
-    'Authorization': auth
-  }
-};
+var geo = process.env.MAP_GEO;
 
-router.post('/vehicle', function(req, res) {
-  res.send();
-});
+module.exports = function(routeData){
+  var router = new Router();
 
-router.post('/stop', function(req, res) {
-  res.send();
-});
+  router.get('/optimized', function(req, res) {
 
-router.get('/optimized', function(req, res) {
-  request.post(options, function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body);
-        res.send(body);
-      } else {
-        console.log(`${response.statusCode} : ${body.error}`);
-  }
+    var fleet = new Promise(function(resolve, reject) {
+      routeData.getFleet(function(err, docs) {
+        if (!err) {
+          resolve(docs[0]);
+        } else {
+          reject();
+        }
+        
+      })
+    });
+    var visits = new Promise(function(resolve, reject) {
+      routeData.getVisits(function(err, docs) {
+        resolve(docs[0]);
+      })
+    });
+
+    Promise.all([fleet, visits]).then(data => { 
+      var visits = data[1];
+      var fleet = data[0];
+      var options = {
+        url: 'https://api.routific.com/v1/vrp',
+        json: {"visits": visits, "fleet": fleet},
+        headers: {
+          'Authorization': auth
+        }
+      }
+      request.post(options, function(error, response, body) {
+          if (!error && response.statusCode == 200) {
+            res.send(body);
+          } else {
+            console.log(`${response.statusCode} : ${body.error}`);
+        }
+      });
+    });
   });
-
-  
-});
-
-
-module.exports = router;
+  return router;
+}
